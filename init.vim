@@ -1,44 +1,25 @@
 scriptencoding utf-8
 set encoding=utf-8
 
-" Using fish as shell breaks Vundle -> set shell
-set shell=/bin/bash
-
-
-call plug#begin()
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'avakhov/vim-yaml'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'gabrielelana/vim-markdown'
-Plug 'janko-m/vim-test'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'mkitt/tabline.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'rust-lang/rust.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'ngmy/vim-rubocop'
-Plug 'HerringtonDarkholme/yats.vim'
 " Javascript/Typescript plugins
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'prisma/vim-prisma'
 Plug 'jparise/vim-graphql'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
-
-noremap \ :Commentary<CR>
-autocmd FileType ruby setlocal commentstring=#\ %s
-autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 syntax on                         " show syntax highlighting
 filetype plugin indent on
 filetype on
 filetype indent on
+let base16colorspace=256
 
 set autoindent                    " set auto indent
 set ts=2                          " set indent to 2 spaces
@@ -83,9 +64,6 @@ noremap <ScrollWheelRight>   <nop>
 noremap <S-ScrollWheelRight> <nop>
 noremap <C-ScrollWheelRight> <nop>
 
-" put useful info in status bar
-set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
-
 syntax enable
 
 set background=dark
@@ -110,9 +88,6 @@ let g:ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_show_hidden = 1
-
-" die hash rockets, die!
-vnoremap <leader>h :s/:\(\w*\) *=>/\1:/g<cr>
 
 " map git commands
 map <leader>log :!clear && git log -p %<cr>
@@ -155,28 +130,6 @@ if exists('+colorcolumn')
   set colorcolumn=100
 endif
 
-" execute current file
-map <leader>e :call ExecuteFile(expand("%"))<cr>
-
-" execute file if we know how
-function! ExecuteFile(filename)
-  :w
-  :silent !clear
-  if match(a:filename, '\.rb$') != -1
-    exec ":!ruby " . a:filename
-  elseif match(a:filename, '\.cr$') != -1
-    exec ":!crystal run " . a:filename
-  elseif match(a:filename, '\.js$') != -1
-    exec ":!node " . a:filename
-  elseif match(a:filename, '\.ts$') != -1
-    exec ":!ts-node " . a:filename
-  elseif match(a:filename, '\.sh$') != -1
-    exec ":!bash " . a:filename
-  else
-    exec ":!echo \"Don't know how to execute: \"" . a:filename
-  end
-endfunction
-
 " jump to last position in file
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -194,20 +147,6 @@ vmap <S-Down> <nop>
 nmap <S-Up> <nop>
 nmap <S-Down> <nop>
 
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 hi SpellBad ctermfg=0 ctermbg=2
 hi SpellCap ctermfg=0 ctermbg=2
 
@@ -220,32 +159,10 @@ highlight GitGutterDelete ctermfg=red ctermbg=0
 highlight GitGutterChangeDelete ctermfg=yellow ctermbg=0
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'one',
       \ 'component': {
       \   'readonly': '%{&readonly?"x":""}',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
-
-" Set specific linters
-" \   'ruby': ['rubocop', 'reek', 'brakeman', 'rails_best_practices'],
-" \   'typescript': ['eslint', 'prettier'],
-" \   'javascript': ['eslint', 'prettier'],
-" let g:ale_linters = {
-" \   'ruby': ['rubocop'],
-" \   'crystal': ['ameba'],
-" \}
-
-" \   'javascript': ['prettier'],
-" \   'typescript': ['prettier'],
-" let g:ale_fixers = {
-" \   'ruby': ['rubocop']
-" \}
-
-" Only run linters named in ale_linters settings.
-" let g:ale_linters_explicit = 1
-
-" let g:ale_sign_column_always = 1
-" let g:ale_ruby_rubocop_executable = 'bundle'
-" let g:ale_ruby_reek_executable = 'bundle'
