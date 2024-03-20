@@ -25,6 +25,10 @@ export ZSH="/home/benjamin/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="spaceship"
 
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_USER_SHOW=always
+SPACESHIP_DIR_TRUNC_REPO=false
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -117,5 +121,14 @@ alias vpn-up="sudo wg-quick up wg0"
 alias vpn-down="sudo wg-quick down wg0"
 alias cd..="cd .."
 
-export DOCKER_BUILDKIT=1 # or configure in daemon.json
-export COMPOSE_DOCKER_CLI_BUILD=1
+# export DOCKER_BUILDKIT=1 # or configure in daemon.json
+# export COMPOSE_DOCKER_CLI_BUILD=1
+export PATH="$PATH:/home/benjamin/.local/bin"
+
+# bun completions
+[ -s "/home/benjamin/.bun/_bun" ] && source "/home/benjamin/.bun/_bun"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PICO_SDK_PATH="/home/benjamin/dev/github/pico/pico-sdk"

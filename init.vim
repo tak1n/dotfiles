@@ -4,33 +4,32 @@ set encoding=utf-8
 " Using fish as shell breaks Vundle -> set shell
 set shell=/bin/bash
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'gmarik/vundle'
+call plug#begin()
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'avakhov/vim-yaml'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'dense-analysis/ale'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'janko-m/vim-test'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mkitt/tabline.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'neoclide/coc.nvim'
-Plugin 'pantharshit00/vim-prisma'
-Plugin 'vim-crystal/vim-crystal'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'avakhov/vim-yaml'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'gabrielelana/vim-markdown'
+Plug 'janko-m/vim-test'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mkitt/tabline.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'ngmy/vim-rubocop'
+Plug 'HerringtonDarkholme/yats.vim'
+" Javascript/Typescript plugins
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'prisma/vim-prisma'
+Plug 'jparise/vim-graphql'
+Plug 'neoclide/coc.nvim'
 
-call vundle#end()
+call plug#end()
 
 noremap \ :Commentary<CR>
 autocmd FileType ruby setlocal commentstring=#\ %s
@@ -119,8 +118,24 @@ vnoremap <leader>h :s/:\(\w*\) *=>/\1:/g<cr>
 map <leader>log :!clear && git log -p %<cr>
 map <leader>dif :!clear && git diff %<cr>
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " Organize TypeScript Imports
 nmap <leader>i :CocCommand tsserver.organizeImports<cr>
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -215,22 +230,22 @@ let g:lightline = {
 
 " Set specific linters
 " \   'ruby': ['rubocop', 'reek', 'brakeman', 'rails_best_practices'],
-let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'ruby': ['rubocop'],
-\   'crystal': ['ameba'],
-\}
+" \   'typescript': ['eslint', 'prettier'],
+" \   'javascript': ['eslint', 'prettier'],
+" let g:ale_linters = {
+" \   'ruby': ['rubocop'],
+" \   'crystal': ['ameba'],
+" \}
 
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'typescript': ['prettier'],
-\   'ruby': ['rubocop']
-\}
+" \   'javascript': ['prettier'],
+" \   'typescript': ['prettier'],
+" let g:ale_fixers = {
+" \   'ruby': ['rubocop']
+" \}
 
 " Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 
-let g:ale_sign_column_always = 1
-let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_ruby_reek_executable = 'bundle'
+" let g:ale_sign_column_always = 1
+" let g:ale_ruby_rubocop_executable = 'bundle'
+" let g:ale_ruby_reek_executable = 'bundle'
