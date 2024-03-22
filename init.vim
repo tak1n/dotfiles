@@ -3,9 +3,10 @@ set encoding=utf-8
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'chriskempson/base16-vim'
+Plug 'RRethy/base16-nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 " Javascript/Typescript plugins
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -20,6 +21,8 @@ filetype plugin indent on
 filetype on
 filetype indent on
 let base16colorspace=256
+
+colorscheme base16-eva-dim
 
 set autoindent                    " set auto indent
 set ts=2                          " set indent to 2 spaces
@@ -81,13 +84,6 @@ hi Pmenu ctermfg=2 ctermbg=235
 
 " set leader key to comma
 let mapleader = ","
-
-" ctrlp config
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_max_height = 30
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_show_hidden = 1
 
 " map git commands
 map <leader>log :!clear && git log -p %<cr>
@@ -166,3 +162,9 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
