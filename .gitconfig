@@ -3,4 +3,4 @@
 [includeIf "gitdir:onlim/"]
   path = .gitconfig-work
 [core]
-  editor = vim
+  editor = nvim
