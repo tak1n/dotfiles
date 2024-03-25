@@ -8,11 +8,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_USER_SHOW=always
-SPACESHIP_DIR_TRUNC_REPO=false
+# SPACESHIP_TIME_SHOW=true
+# SPACESHIP_USER_SHOW=always
+# SPACESHIP_DIR_TRUNC_REPO=false
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,7 +74,7 @@ SPACESHIP_DIR_TRUNC_REPO=false
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker kubectl chruby nvm node npm)
+plugins=(git docker nvm node npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,13 +111,11 @@ alias cd..="cd .."
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
+        source "$BASE16_SHELL/profile_helper.sh"
+        
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-source /usr/local/share/chruby/chruby.sh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
