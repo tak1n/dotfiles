@@ -1,0 +1,237 @@
+{
+  "modules-left": [
+    "custom/launcher",
+    "sway/workspaces",
+    // "custom/scratchpad-indicator",
+    "temperature",
+    "pulseaudio",
+    "idle_inhibitor",
+    "sway/language",
+    // "mpd",
+    // "custom/cava-internal",
+    "sway/mode"
+  ],
+  "sway/mode": {
+    "format": " {}"
+  },
+  "modules-center": [
+    // "custom/weather",
+    "clock"
+  ],
+  "modules-right": [
+    "backlight",
+    // "custom/pacman",
+    "disk",
+    "memory",
+    "cpu",
+    "network",
+    "battery",
+    "tray",
+    // "custom/recording",
+    "custom/powermenu"
+  ],
+  "custom/launcher": {
+    "format": "\udb82\udcc7",
+    "on-click": "fuzzel",
+    "tooltip": false
+  },
+  // "custom/cava-internal": {
+  //   "exec": "~/.config/waybar/Cava.sh",
+  //   "tooltip": false
+  // },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    /* "all-outputs": true, */
+    "active-only": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "\ueb7f",
+      // "1": "1",
+      "2": "\ueb7f",
+      // "2": "2",
+      "3": "\ueb7f",
+      // "3": "3",
+      // "4": "四",
+      "4": "\ueb7f",
+      // "5": "五",
+      "5": "\ueb7f",
+      // "6": "六",
+      "6": "\ueb7f",
+      // "7": "七",
+      "7": "\ueb7f",
+      // "8": "八",
+      "8": "\ueb7f",
+      // "9": "九",
+      "9": "\ueb7f",
+      // "10": "十",
+      "10": "\ueb7f",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      // "activated": "",
+      // "deactivated": ""
+      "activated": "\uf06e", 
+      "deactivated": "\uf070" 
+    },
+    "tooltip": false
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {used}",
+    "path": "/home",
+    "tooltip": true,
+    "tooltip-format": "{used}/{total} => {path} {percentage_used}%"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "format-muted": "婢 Muted",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    /* "states": { */
+    /*   "warning": 100, */
+    /* }, */
+    "scroll-step": 1,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-full": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "tooltip": true,
+  },
+  "clock": {
+    // "on-click": "~/.config/waybar/to_latte.sh &",
+    // "on-click-right": "~/.config/waybar/wallpaper_random.sh &",
+    // "on-click-middle": "~/.config/waybar/live_wallpaper.sh &",
+    "interval": 1,
+    "format": "{:%I:%M %p  %A %b %d}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>"
+  },
+  "memory": {
+    "on-click": "alacritty btm",
+    "interval": 1,
+    "format": "\udb80\udf5b {percentage}%",
+    "states": {
+      "warning": 85,
+    },
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "\uf4bc {usage}%"
+  },
+  // "mpd": {
+  //   "max-length": 25,
+  //   "format": "<span foreground='#bb9af7'></span> {title}",
+  //   "format-paused": " {title}",
+  //   "format-stopped": "<span foreground='#bb9af7'></span>",
+  //   "format-disconnected": "",
+  //   "on-click": "mpc --quiet toggle",
+  //   "on-click-right": "mpc ls | mpc add",
+  //   "on-click-middle": "kitty ncmpcpp",
+  //   "on-scroll-up": "mpc --quiet prev",
+  //   "on-scroll-down": "mpc --quiet next",
+  //   "smooth-scrolling-threshold": 5,
+  //   "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
+  // },
+  "network": {
+    "interval": 1,
+    "format-wifi": "\uf1eb {essid}",
+    "format-ethernet": "  {ifname} ({ipaddr})",
+    "format-linked": "  {essid} (No IP)",
+    "format-disconnected": "\uead0 Disconnected",
+    "tooltip": false
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp2_input",
+    "critical-threshold": 80,
+    "tooltip": false,
+    "format": " {temperatureC}°C"
+  },
+  "custom/powermenu": {
+    "format": "{}",
+    "exec": "echo ; echo  logout",
+    "on-click": "~/.config/wlogout/logoutlaunch.sh 2",
+    "interval" : 86400, // once every day
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 5
+  },
+  // "custom/pacman": {
+  //   "format": " {}",
+  //   "interval": 3600, // every hour
+  //   "exec": "checkupdates | wc -l", // # of updates
+  //   "exec-if": "exit 0", // always run; consider advanced run conditions
+  //   "exec-if": "checkupdates | wc -l > 0", // always run; consider advanced run conditions
+  //   /* "on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system */
+  //   "on-click": "alacritty yay && alacritty flatpak update && alacritty gem update --system && alacritty gem update && alacritty rustup update && alacritty sudo npm update -g npm",
+  //   "signal": 8
+  // },
+  // "custom/scratchpad-indicator": {
+  //   "interval": 3,
+  //   "return-type": "json",
+  //   "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+  //   "format": " {}",
+  //   "on-click": "exec swaymsg 'scratchpad show'",
+  //   "on-click-right": "exec swaymsg 'move scratchpad'"
+  // },
+  // "custom/weather": {
+  //   "format": "{}",
+  //   "tooltip": true,
+  //   "interval": 3600,
+  //   "exec": "~/.config/waybar/wabar-wttr.py",
+  //   "return-type": "json"
+  // },
+  // "custom/recording": {
+  //   "exec": "$XDG_CONFIG_HOME/waybar/scripts/recording.sh status",
+  //   "format": "{}",
+  //   "on-click": "$XDG_CONFIG_HOME/waybar/scripts/recording.sh toggle fullscreen",
+  //   "on-click-right": "$XDG_CONFIG_HOME/waybar/scripts/recording.sh toggle region",
+  //   "restart-interval": 1,
+  //   "return-type": "json",
+  //   "tooltip": true
+  // },
+  "sway/language": {
+    "format": "{}",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  }
+}

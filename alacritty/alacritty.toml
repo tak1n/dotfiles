@@ -1,0 +1,5 @@
+[window]
+opacity = 0.8
+
+[env]
+term = "xterm-256color"
