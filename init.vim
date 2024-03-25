@@ -4,12 +4,11 @@ set encoding=utf-8
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
-Plug 'RRethy/base16-nvim'
+Plug 'tinted-theming/base16-vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 " Javascript/Typescript plugins
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'prisma/vim-prisma'
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -20,9 +19,10 @@ syntax on                         " show syntax highlighting
 filetype plugin indent on
 filetype on
 filetype indent on
-let base16colorspace=256
+set termguicolors
 
-colorscheme base16-eva-dim
+let base16_background_transparent=1
+colorscheme base16-horizon-dark
 
 set autoindent                    " set auto indent
 set ts=2                          " set indent to 2 spaces
@@ -69,18 +69,18 @@ noremap <C-ScrollWheelRight> <nop>
 
 syntax enable
 
-set background=dark
+" set background=dark
 
 syn match Todo "@todo" "@TODO" TODO todo contained
 
 " set up some custom colors
 hi clear CursorLine
-hi ColorColumn  ctermbg=1
-hi LineNr       ctermbg=236 ctermfg=240
-hi CursorLineNr ctermfg=2 cterm=bold ctermbg=235
-hi CursorLine   ctermbg=235
-hi CursorColumn ctermbg=235
-hi Pmenu ctermfg=2 ctermbg=235
+" hi ColorColumn  ctermbg=50
+" hi LineNr       ctermbg=236 ctermfg=240
+" hi CursorLineNr ctermfg=2 cterm=bold ctermbg=235
+" hi CursorLine   ctermbg=235
+" hi CursorColumn ctermbg=235
+" hi Pmenu ctermfg=2 ctermbg=235
 
 " set leader key to comma
 let mapleader = ","
