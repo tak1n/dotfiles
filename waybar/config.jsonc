@@ -28,6 +28,7 @@
     "cpu",
     "network",
     "battery",
+    "power-profiles-daemon",
     "tray",
     // "custom/recording",
     "custom/powermenu"
@@ -126,6 +127,17 @@
     "format-full": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
     "tooltip": true
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
   "clock": {
     "interval": 1,
