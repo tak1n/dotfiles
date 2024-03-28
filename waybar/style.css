@@ -29,9 +29,9 @@
 #mpd, #idle_inhibitor, #backlight, #pulseaudio, #network, 
 #battery, #custom-powermenu, #custom-cava-internal,
 #custom-launcher, #tray, #disk, #custom-pacman, #custom-scratchpad-indicator,
-#custom-power, #language {
-  padding-left: .6rem;
-  padding-right: .6rem;
+#custom-power, #language, #bluetooth {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Bar */
@@ -52,7 +52,7 @@ window > box {
 }
 
 #workspaces button {
-  padding-right: .4rem;
+  padding-right: .8rem;
   padding-left: .4rem;
   padding-top: .1rem;
   padding-bottom: .1rem;
@@ -96,10 +96,19 @@ tooltip label {
   color: @pink;
 }
 #custom-powermenu {
-  color: @red;
+  color: #000;
+  background-color: @red;
+  padding-right: 18px;
 }
 #power-profiles-daemon {
   color: @green;
+  padding-right: 8px;
+}
+#bluetooth {
+  color: #000;
+  background: @blue;
+  padding: 5px;
+  padding-right: 8px;
 }
 
 /* mpd */
@@ -121,7 +130,9 @@ tooltip label {
   padding-right: 1rem;
 }
 #custom-launcher {
-  color: @yellow;
+  color: #000;
+  background: @yellow;
+  padding-right: 15px;
 }
 #memory {
   color: @peach;
@@ -145,7 +156,10 @@ tooltip label {
   color: @mauve;  /* not active */
 }
 #network {
-  color: @pink; /* not active */
+  color: #000; /* not active */
+  background: @pink;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 #network.disconnected {
   color: @foreground;  /* not active */
