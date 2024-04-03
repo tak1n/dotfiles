@@ -1,0 +1,6 @@
+[includeIf "gitdir:~/dev/personal/"]
+  path = ~/.gitconfig-personal
+[includeIf "gitdir:~/dev/work/"]
+  path = ~/.gitconfig-work
+[core]
+  editor = nvim
