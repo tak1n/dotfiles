@@ -1,27 +1,21 @@
 {
   "modules-left": [
     "custom/launcher",
-    // "sway/workspaces",
     "sway/workspaces",
-    // "custom/scratchpad-indicator",
     "temperature",
     "pulseaudio",
     "idle_inhibitor",
     "sway/language",
-    // "mpd",
-    // "custom/cava-internal",
+    "backlight",
     "sway/mode"
   ],
   "sway/mode": {
     "format": " {}"
   },
   "modules-center": [
-    // "custom/weather",
     "clock"
   ],
   "modules-right": [
-    "backlight",
-    // "custom/pacman",
     "disk",
     "disk#disk2",
     "memory",
@@ -31,7 +25,6 @@
     "battery",
     "power-profiles-daemon",
     "tray",
-    // "custom/recording",
     "custom/powermenu"
   ],
   "custom/launcher": {
@@ -41,20 +34,18 @@
   },
   "sway/workspaces": {
     "disable-scroll": true,
-    /* "all-outputs": true, */
     "active-only": true,
     "format": "{icon}",
     "format-icons": {
-      "1": "\ueb7f",
-      "2": "\ueb7f",
-      "3": "\ueb7f",
-      "4": "\ueb7f",
-      "5": "\ueb7f",
-      "6": "\ueb7f",
-      "7": "\ueb7f",
-      "8": "\ueb7f",
-      "9": "\ueb7f",
-      "10": "\ueb7f",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
       "urgent": "",
       "focused": "",
       "default": ""
@@ -159,21 +150,8 @@
     "interval": 1,
     "format": "\uf4bc {usage}%"
   },
-  // "mpd": {
-  //   "max-length": 25,
-  //   "format": "<span foreground='#bb9af7'></span> {title}",
-  //   "format-paused": " {title}",
-  //   "format-stopped": "<span foreground='#bb9af7'></span>",
-  //   "format-disconnected": "",
-  //   "on-click": "mpc --quiet toggle",
-  //   "on-click-right": "mpc ls | mpc add",
-  //   "on-click-middle": "kitty ncmpcpp",
-  //   "on-scroll-up": "mpc --quiet prev",
-  //   "on-scroll-down": "mpc --quiet next",
-  //   "smooth-scrolling-threshold": 5,
-  //   "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
-  // },
   "network": {
+    "on-click": "alacritty -e nmtui",
     "interval": 1,
     "format-wifi": "\uf1eb {essid}",
     "format-ethernet": "  {ifname} ({ipaddr})",
@@ -182,6 +160,7 @@
     "tooltip": false
   },
   "bluetooth": {
+    "on-click": "alacritty -e bluetuith",
     "format": " {status}",
     "format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
@@ -207,13 +186,6 @@
     "icon-size": 15,
     "spacing": 5
   },
-  // "custom/weather": {
-  //   "format": "{}",
-  //   "tooltip": true,
-  //   "interval": 3600,
-  //   "exec": "~/.config/waybar/wabar-wttr.py",
-  //   "return-type": "json"
-  // },
   "sway/language": {
     "format": "{long}",
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"

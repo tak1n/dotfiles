@@ -3,7 +3,7 @@
 /* Global */
 * {
   font-family: "FiraCode Nerd Font";
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition-property: background-color;
   transition-duration: 0.5s;
   background-color: shade(@base, 0.9);
@@ -70,22 +70,28 @@ window > box {
 
 #workspaces button {
   padding-right: 0.8rem;
-  padding-left: 0.4rem;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
+  padding-left: 0.8rem;
+  /*padding-top: 0.1rem;
+  padding-bottom: 0.1rem;*/
   color: @red;
   /* border: .2px solid transparent; */
-  background: transparent;
+  /* background: transparent; */
 }
 
 #workspaces button.focused {
   color: @blue;
+  border: 0px;
 }
 
-/*#workspaces button:hover {
-  border: 0px solid transparent;
+#workspaces button.urgent {
+  animation-name: none;
+  border: 0px;
+}
+
+#workspaces button:hover {
   color: @rosewater;
-}*/
+  background: @blue;
+}
 
 /* Tooltip */
 tooltip {
@@ -176,12 +182,13 @@ tooltip label {
 }
 #network {
   color: #000; /* not active */
-  background: @yellow;
+  background: @green;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 #network.disconnected {
-  color: @foreground; /* not active */
+  color: #000; /* not active */
+  background: @red;
 }
 #disk {
   color: @maroon;
