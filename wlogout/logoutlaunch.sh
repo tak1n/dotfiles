@@ -27,5 +27,5 @@ esac
 wlStyle=`envsubst < $wlTmplt`
 
 # launch wlogout
-# wlogout -b $wlColms -c 0 -r 0 --layout $wLayout --css <(echo "$wlStyle") --protocol layer-shell
-wlogout -b $wlColms -c 0 -r 0 --layout $wLayout --protocol layer-shell
+wlogout -b $wlColms -c 0 -r 0 --layout $wLayout --css <(echo "$wlStyle") --protocol layer-shell
+# wlogout -b $wlColms -c 0 -r 0 --layout $wLayout --protocol layer-shell

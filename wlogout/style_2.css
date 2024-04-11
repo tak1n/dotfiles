@@ -1,59 +1,70 @@
+* {
+  background-image: none;
+  font-family: "FiraCode Nerd Font";
+}
 window {
-    font-family: CaskaydiaCove Nerd Font, monospace;
-    font-size: 12pt;
-    color: #cdd6f4; 
-    background-color: rgba(17, 17, 27, .88);
+  background-color: rgba(250, 250, 250, 0.8);
 }
 
 button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-    border: none;
-    color: #ced7f4;
-    text-shadow: none;
-    border-radius: 20px 20px 20px 20px;
-    background-color: rgba(30, 30, 46, 0);
-    margin: 5px;
-    transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  color: #0f2137;
+  font-size: 16px;
+  background-color: #e7e7ec;
+  border-style: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+  border-radius: 30px;
+  margin: 182px 5px;
+  text-shadow: 0px 0px;
+  box-shadow: 0px 0px;
 }
 
+button:focus,
+button:active,
 button:hover {
-    background-color: rgba(49, 50, 68, 0.1);
+  background-color: #fab387;
+  outline-style: none;
 }
 
 #lock {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/lock.png"));
-    background-size: 70%;
-}
-#lock:focus {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/lock-hover.png"));
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/lock.png"),
+    url("/usr/local/share/wlogout/icons/lock.png")
+  );
 }
 
 #logout {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/logout.png"));
-}
-#logout:focus {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/logout-hover.png"));
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/logout.png"),
+    url("/usr/local/share/wlogout/icons/logout.png")
+  );
 }
 
 #suspend {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/sleep.png"));
-} 
-#suspend:focus {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/sleep-hover.png"));
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/suspend.png"),
+    url("/usr/local/share/wlogout/icons/suspend.png")
+  );
+}
+
+#hibernate {
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/hibernate.png"),
+    url("/usr/local/share/wlogout/icons/hibernate.png")
+  );
 }
 
 #shutdown {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/power.png"));
-}
-#shutdown:focus {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/power-hover.png"));
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/shutdown.png"),
+    url("/usr/local/share/wlogout/icons/shutdown.png")
+  );
 }
 
 #reboot {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/restart.png"));
-}
-#reboot:focus {
-    background-image: image(url("/home/tak1n/.config/wlogout/icons/restart-hover.png"));
+  background-image: image(
+    url("/home/tak1n/.config/wlogout/icons/reboot.png"),
+    url("/usr/local/share/wlogout/icons/reboot.png")
+  );
 }
