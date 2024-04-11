@@ -80,17 +80,15 @@ window > box {
 
 #workspaces button.focused {
   color: @blue;
-  border: 0px;
 }
 
 #workspaces button.urgent {
   animation-name: none;
-  border: 0px;
 }
 
 #workspaces button:hover {
   color: @rosewater;
-  background: @blue;
+  background: transparent;
 }
 
 /* Tooltip */
@@ -204,4 +202,14 @@ tooltip label {
 }
 #language {
   color: @yellow;
+}
+
+#tray menu {
+  color: #fff;
+  border: none;
+}
+
+#tray menu menuitem:hover {
+  color: @yellow;
+  border: none;
 }
