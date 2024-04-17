@@ -22,7 +22,7 @@ filetype indent on
 set termguicolors
 
 let base16_background_transparent=1
-colorscheme base16-horizon-dark
+colorscheme base16-nord
 
 set autoindent                    " set auto indent
 set ts=2                          " set indent to 2 spaces
@@ -103,6 +103,8 @@ endfunction
 " Organize TypeScript Imports
 nmap <leader>i :CocCommand tsserver.organizeImports<cr>
 
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
@@ -168,3 +170,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
