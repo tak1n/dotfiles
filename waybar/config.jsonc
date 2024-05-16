@@ -152,12 +152,17 @@
   },
   "network": {
     "on-click": "alacritty -e nmtui",
+    // "interface": "enp1s0",
     "interval": 1,
-    "format-wifi": "\uf1eb {essid}",
-    "format-ethernet": "  {ifname} ({ipaddr})",
+    "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
+    "format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
     "format-linked": "  {essid} (No IP)",
     "format-disconnected": "\uead0 Disconnected",
-    "tooltip": false
+    "tooltip": true,
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    // "tooltip-format-wifi": " {bandwidthDownBits}  {bandwidthUpBits} ,
+    "tooltip-format-ethernet": " {bandwidthDownBits}  {bandwidthUpBits} ",
+    "tooltip-format-disconnected": "Disconnected"
   },
   "bluetooth": {
     "on-click": "alacritty -e bluetuith",
@@ -172,7 +177,7 @@
   },
   "temperature": {
     "hwmon-path": "/sys/class/hwmon/hwmon4/temp2_input",
-    "critical-threshold": 80,
+    // "critical-threshold": 100,
     "tooltip": false,
     "format": " {temperatureC}°C"
   },
