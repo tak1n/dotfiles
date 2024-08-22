@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 alias vpn-up="sudo wg-quick up wg0"
 alias vpn-down="sudo wg-quick down wg0"
 alias cd..="cd .."
-alias get_idf='. $HOME/dev/personal/esp/esp-idf/export.sh'
+alias mkubectl="minikube kubectl"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -129,3 +129,6 @@ export KUBE_EDITOR="nvim"
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec sway
 fi
+
+eval $(minikube -p minikube docker-env)
+source <(kubectl completion zsh)
