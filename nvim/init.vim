@@ -54,18 +54,18 @@ set fileencoding=utf-8            " The encoding written to file.
 set synmaxcol=800                 " don't highlight lines longer than 800
 set noshowmode
 
-noremap <ScrollWheelUp>      <nop>
-noremap <S-ScrollWheelUp>    <nop>
-noremap <C-ScrollWheelUp>    <nop>
-noremap <ScrollWheelDown>    <nop>
-noremap <S-ScrollWheelDown>  <nop>
-noremap <C-ScrollWheelDown>  <nop>
-noremap <ScrollWheelLeft>    <nop>
-noremap <S-ScrollWheelLeft>  <nop>
-noremap <C-ScrollWheelLeft>  <nop>
-noremap <ScrollWheelRight>   <nop>
-noremap <S-ScrollWheelRight> <nop>
-noremap <C-ScrollWheelRight> <nop>
+" noremap <ScrollWheelUp>      <nop>
+" noremap <S-ScrollWheelUp>    <nop>
+" noremap <C-ScrollWheelUp>    <nop>
+" noremap <ScrollWheelDown>    <nop>
+" noremap <S-ScrollWheelDown>  <nop>
+" noremap <C-ScrollWheelDown>  <nop>
+" noremap <ScrollWheelLeft>    <nop>
+" noremap <S-ScrollWheelLeft>  <nop>
+" noremap <C-ScrollWheelLeft>  <nop>
+" noremap <ScrollWheelRight>   <nop>
+" noremap <S-ScrollWheelRight> <nop>
+" noremap <C-ScrollWheelRight> <nop>
 
 syntax enable
 
@@ -75,12 +75,6 @@ syn match Todo "@todo" "@TODO" TODO todo contained
 
 " set up some custom colors
 hi clear CursorLine
-" hi ColorColumn  ctermbg=50
-" hi LineNr       ctermbg=236 ctermfg=240
-" hi CursorLineNr ctermfg=2 cterm=bold ctermbg=235
-" hi CursorLine   ctermbg=235
-" hi CursorColumn ctermbg=235
-" hi Pmenu ctermfg=2 ctermbg=235
 
 " set leader key to comma
 let mapleader = ","
@@ -99,9 +93,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Organize TypeScript Imports
-nmap <leader>i :CocCommand tsserver.organizeImports<cr>
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
@@ -173,3 +164,13 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+
+
+" if has('nvim-0.4.0') || has('patch-8.2.0750')
+"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" endif

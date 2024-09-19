@@ -41,6 +41,7 @@
 #custom-powermenu,
 #custom-cava-internal,
 #custom-launcher,
+#custom-clock,
 #tray,
 #disk,
 #custom-pacman,
@@ -156,6 +157,9 @@ tooltip label {
   color: #000;
   background: @yellow;
   padding-right: 15px;
+}
+#custom-clock {
+  color: #fff;
 }
 #memory {
   color: @peach;
