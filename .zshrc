@@ -106,7 +106,6 @@ source $ZSH/oh-my-zsh.sh
 alias vpn-up="sudo wg-quick up wg0"
 alias vpn-down="sudo wg-quick down wg0"
 alias cd..="cd .."
-alias mkubectl="minikube kubectl"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -118,7 +117,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/chruby.sh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -126,9 +125,8 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export KUBE_EDITOR="nvim"
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-  exec sway
-fi
+# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+#   exec sway
+# fi
 
-eval $(minikube -p minikube docker-env)
 source <(kubectl completion zsh)
