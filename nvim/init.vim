@@ -15,6 +15,12 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
 
+let g:coc_global_extensions = [
+      \'coc-tsserver',
+      \'coc-prettier',
+      \'coc-prisma',
+      \]
+
 syntax on                         " show syntax highlighting
 filetype plugin indent on
 filetype on
