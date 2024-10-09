@@ -1,9 +1,10 @@
 # Dotfiles
 
-Configuration-/Dotfiles for my Arch Linux setup using Wayland.
+Configuration-/Dotfiles for my Arch Linux setup using Wayland. Currently switching between Sway and KDE Plasma as fullblown Desktop Environment.
 
-- Display Manager: [SDDM](https://wiki.archlinux.org/title/SDDM) + [Theme](https://github.com/Kangie/sddm-sugar-candy)
-- Window Manager: [Sway](https://wiki.archlinux.org/title/Sway)
+- Display Manager: [Lemurs](https://github.com/coastalwhite/lemurs)
+- Desktop Environment: [KDE Plasma](https://wiki.archlinux.org/title/KDE#Plasma)
+- Wayland compositor: [Sway](https://wiki.archlinux.org/title/Sway)
 - Menu Bar: [Waybar](https://github.com/Alexays/Waybar)
 - Logout Menu: [wlogout](https://github.com/ArtsyMacaw/wlogout)
 - Terminal: [Alacritty](https://wiki.archlinux.org/title/Alacritty)

@@ -1,10 +1,12 @@
 bluetuith 0.2.3-1
+brave-bin 1:1.70.123-1
 insomnia 10.0.0-1
 neovim-symlinks 5-1
 slack-desktop 4.39.95-1
 swaylock-effects 1.7.0.0-4
+teamviewer 15.57.3-1
 tfenv 3.0.0-2
-visual-studio-code-bin 1.93.1-1
+visual-studio-code-bin 1.94.1-1
 vpcs 0.8.3-1
 wireplumber-git 0.5.6.r1.gb68a679-1
 wlogout 1.2.2-0
