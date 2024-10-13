@@ -103,8 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vpn-up="sudo wg-quick up wg0"
-alias vpn-down="sudo wg-quick down wg0"
+alias vpn-up="nmcli conn up wg0"
+alias vpn-down="nmcli conn down wg0"
 alias cd..="cd .."
 
 # Base16 Shell
@@ -130,3 +130,28 @@ export KUBE_EDITOR="nvim"
 # fi
 
 source <(kubectl completion zsh)
+
+# kubeconfig.d
+update_kubeconfigs() {
+  [ ! -d "$HOME/.kube/config.d" ] && mkdir $HOME/.kube/config.d -p -v
+
+  local new_files=$(find $HOME/.kube/config.d/ -newer $HOME/.kube/config -type f | wc -l)
+  if [[ $new_files -ne "0" ]]; then
+    local current_context=$(kubectl config current-context) # Save last context
+    local kubeconfigdir="$HOME/.kube"               # New config file
+    local kubeconfigfile="$kubeconfigdir/config"               # New config file
+    mkdir -p "${kubeconfigdir}/backup"
+    cp -a $kubeconfigfile "${kubeconfigdir}/backup/config_$(date +"%Y%m%d%H%M%S")"  # Backup
+    local kubeconfig_files=$(ls $HOME/.kube/config.d/*)
+
+    local kubeconfig_files_list="$(echo "$kubeconfig_files" | tr '\n' ':')"
+    KUBECONFIG=$kubeconfig_files_list kubectl config view --merge --flatten > "$HOME/.kube/tmp"
+    \mv "$HOME/.kube/tmp" $kubeconfigfile && chmod 600 $kubeconfigfile
+    export KUBECONFIG=$kubeconfigfile
+    kubectl config use-context $current_context
+  fi
+}
+
+# This will call each time you source .bashrc, remove it if you want to call it manually each time
+update_kubeconfigs
+. "/home/tak1n/.deno/env"
