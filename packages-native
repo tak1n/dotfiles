@@ -141,6 +141,7 @@ wget 1.24.5-3
 wireguard-tools 1.0.20210914-2
 wireplumber 0.5.6-1
 wireshark-qt 4.4.1-1
+wl-clipboard 1:2.2.1-2
 xdg-desktop-portal-kde 6.2.0-1
 zathura 0.5.8-1
 zathura-pdf-mupdf 0.4.4-4
