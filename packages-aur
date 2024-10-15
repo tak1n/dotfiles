@@ -4,10 +4,8 @@ insomnia 10.0.0-1
 librewolf-bin 131.0.2-1
 neovim-symlinks 5-1
 slack-desktop 4.39.95-1
-swaylock-effects 1.7.0.0-4
 tfenv 3.0.0-2
 visual-studio-code-bin 1.94.2-1
 vpcs 0.8.3-1
-wireplumber-git 0.5.6.r1.gb68a679-1
-wlogout 1.2.2-0
 yay 12.4.2-1
+yay-debug 12.4.2-1
