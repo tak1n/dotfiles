@@ -7,11 +7,34 @@ Plug 'itchyny/lightline.vim'
 Plug 'tinted-theming/base16-vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'nvim-tree/nvim-web-devicons'
 " Javascript/Typescript plugins
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'prisma/vim-prisma'
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Go plugins
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" https://github.com/yetone/avante.nvim
+" Deps
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'stevearc/dressing.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'MeanderingProgrammer/render-markdown.nvim'
+" 
+" " Optional deps
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+" Plug 'HakonHarnes/img-clip.nvim'
+" Plug 'zbirenbaum/copilot.lua'
+" 
+" " Yay, pass source=true if you want to build from source
+" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+" autocmd! User avante.nvim lua << EOF
+" require('avante').setup()
+" EOF
 
 call plug#end()
 
@@ -19,7 +42,10 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-prettier',
       \'coc-prisma',
+      \'coc-go',
       \]
+
+let g:go_gopls_enabled =0
 
 syntax on                         " show syntax highlighting
 filetype plugin indent on
