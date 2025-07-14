@@ -74,7 +74,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker nvm node npm)
+plugins=(git terraform kubectx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,18 +106,15 @@ source $ZSH/oh-my-zsh.sh
 alias vpn-up="nmcli conn up wg0"
 alias vpn-down="nmcli conn down wg0"
 alias cd..="cd .."
+alias minikubesetup='minikube start && eval $(minikube docker-env)'
+alias wolh2="wol 90:1b:0e:59:d8:ab"
+alias wolh-public="wol 4c:52:62:08:a6:5f"
 
 # Base16 Shell
  BASE16_SHELL="$HOME/.config/base16-shell/"
  [ -n "$PS1" ] && \
      [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
          source "$BASE16_SHELL/profile_helper.sh"
-        
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# source /usr/local/share/chruby/chruby.sh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -154,4 +151,19 @@ update_kubeconfigs() {
 
 # This will call each time you source .bashrc, remove it if you want to call it manually each time
 update_kubeconfigs
-. "/home/tak1n/.deno/env"
+
+# pnpm
+export PNPM_HOME="/home/tak1n/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# go
+export GOPATH=$(asdf where golang)/packages
+export GOROOT=$(asdf where golang)/go
+export PATH="${PATH}:$(go env GOPATH)/bin"
