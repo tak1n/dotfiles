@@ -103,8 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vpn-up="nmcli conn up wg0"
-alias vpn-down="nmcli conn down wg0"
+alias vpn-up="nmcli conn up wg0-vpn"
+alias vpn-down="nmcli conn down wg0-vpn"
+alias vpn2-up="nmcli conn up wg0-vpn2"
+alias vpn2-down="nmcli conn down wg0-vpn2"
 alias cd..="cd .."
 alias minikubesetup='minikube start && eval $(minikube docker-env)'
 alias wolh2="wol 90:1b:0e:59:d8:ab"
