@@ -109,6 +109,7 @@ alias cd..="cd .."
 alias minikubesetup='minikube start && eval $(minikube docker-env)'
 alias wolh2="wol 90:1b:0e:59:d8:ab"
 alias wolh-public="wol 4c:52:62:08:a6:5f"
+alias clean-orphans="sudo pacman -Qdtq | sudo pacman -Rns -"
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
    # Check for a currently running instance of the agent
