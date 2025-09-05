@@ -1,6 +1,9 @@
 scriptencoding utf-8
 set encoding=utf-8
 
+" Install vim-plug
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
@@ -15,26 +18,6 @@ Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Go plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" https://github.com/yetone/avante.nvim
-" Deps
-" Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'stevearc/dressing.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'MunifTanjim/nui.nvim'
-" Plug 'MeanderingProgrammer/render-markdown.nvim'
-" 
-" " Optional deps
-" Plug 'hrsh7th/nvim-cmp'
-" Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
-" Plug 'HakonHarnes/img-clip.nvim'
-" Plug 'zbirenbaum/copilot.lua'
-" 
-" " Yay, pass source=true if you want to build from source
-" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
-" autocmd! User avante.nvim lua << EOF
-" require('avante').setup()
-" EOF
 
 call plug#end()
 
