@@ -139,31 +139,32 @@ export KUBE_EDITOR="nvim"
 #   exec sway
 # fi
 
-source <(kubectl completion zsh)
-
 # kubeconfig.d
-update_kubeconfigs() {
-  [ ! -d "$HOME/.kube/config.d" ] && mkdir $HOME/.kube/config.d -p -v
+# update_kubeconfigs() {
+#   [ ! -d "$HOME/.kube/config.d" ] && mkdir $HOME/.kube/config.d -p -v
+# 
+#   local new_files=$(find $HOME/.kube/config.d/ -newer $HOME/.kube/config -type f | wc -l)
+#   if [[ $new_files -ne "0" ]]; then
+#     local current_context=$(kubectl config current-context) # Save last context
+#     local kubeconfigdir="$HOME/.kube"               # New config file
+#     local kubeconfigfile="$kubeconfigdir/config"               # New config file
+#     mkdir -p "${kubeconfigdir}/backup"
+#     cp -a $kubeconfigfile "${kubeconfigdir}/backup/config_$(date +"%Y%m%d%H%M%S")"  # Backup
+#     local kubeconfig_files=$(ls $HOME/.kube/config.d/*)
+# 
+#     local kubeconfig_files_list="$(echo "$kubeconfig_files" | tr '\n' ':')"
+#     KUBECONFIG=$kubeconfig_files_list kubectl config view --merge --flatten > "$HOME/.kube/tmp"
+#     \mv "$HOME/.kube/tmp" $kubeconfigfile && chmod 600 $kubeconfigfile
+#     export KUBECONFIG=$kubeconfigfile
+#     kubectl config use-context $current_context
+#   fi
+# }
+# 
+# # This will call each time you source .bashrc, remove it if you want to call it manually each time
+# update_kubeconfigs
 
-  local new_files=$(find $HOME/.kube/config.d/ -newer $HOME/.kube/config -type f | wc -l)
-  if [[ $new_files -ne "0" ]]; then
-    local current_context=$(kubectl config current-context) # Save last context
-    local kubeconfigdir="$HOME/.kube"               # New config file
-    local kubeconfigfile="$kubeconfigdir/config"               # New config file
-    mkdir -p "${kubeconfigdir}/backup"
-    cp -a $kubeconfigfile "${kubeconfigdir}/backup/config_$(date +"%Y%m%d%H%M%S")"  # Backup
-    local kubeconfig_files=$(ls $HOME/.kube/config.d/*)
-
-    local kubeconfig_files_list="$(echo "$kubeconfig_files" | tr '\n' ':')"
-    KUBECONFIG=$kubeconfig_files_list kubectl config view --merge --flatten > "$HOME/.kube/tmp"
-    \mv "$HOME/.kube/tmp" $kubeconfigfile && chmod 600 $kubeconfigfile
-    export KUBECONFIG=$kubeconfigfile
-    kubectl config use-context $current_context
-  fi
-}
-
-# This will call each time you source .bashrc, remove it if you want to call it manually each time
-update_kubeconfigs
+# ruby-install & chruby
+source /usr/local/share/chruby/chruby.sh
 
 # pnpm
 export PNPM_HOME="/home/tak1n/.local/share/pnpm"
